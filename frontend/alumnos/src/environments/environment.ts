@@ -14,7 +14,7 @@ export const environment = {
   //apiHost: 'https://2932ee6ac897.ngrok.io/api/',
   endpoints: {
     estudiantes: {
-      link: '/estudiantes/',
+      link: '/alumnos/',
     },
     user: {
       login: '/auth/login/'

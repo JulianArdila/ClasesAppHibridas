@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Crea tu estudiante</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="saveEstudiante(formData)" #formData="ngForm">
+        <ion-item>
+            <ion-label>Nombre</ion-label>
+            <ion-input required type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Codigo</ion-label>
+            <ion-input required type="number" [(ngModel)]="codigo" name="codigo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Fecha de nacimiento</ion-label>
+            <ion-input required type="date" [(ngModel)]="fecha_nacimiento" name="fecha_nacimiento"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Curso</ion-label>
+            <ion-select required placeholder="Selecione un curso" [(ngModel)]="curso" name="curso">
+                <ion-select-option value="">-----</ion-select-option>
+                <ion-select-option value="1">Curso 1</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Estatura</ion-label>
+            <ion-input type="number" [(ngModel)]="estatura" name="estatura"></ion-input>
+        </ion-item>
+        <ion-button expand="block" fill="clear" shape="round" type="submit">
+            Guargar
+        </ion-button>
+    </form>
+</ion-content>

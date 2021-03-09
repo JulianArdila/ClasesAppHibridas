@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Login } from '../interfaces/auth';
+
 const {
   appName,
   apiVersion,
@@ -20,13 +21,11 @@ export class UserService {
   private endpoints = endpoints;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   login(data: Login) {
     return new Promise((resolve, reject) => {
-      console.log(this.http)
-      console.log(this)
       this.http.post(this.apiHost + this.apiVersion + this.endpoints.user.login, data).subscribe(
         res => {
           resolve(res);

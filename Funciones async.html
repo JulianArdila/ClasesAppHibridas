@@ -1,0 +1,73 @@
+<script>
+    function tomarDucha() {
+        console.log("Inicio la ducha");
+        return new Promise(
+            (resolve) => {
+                setTimeout(() => {
+                    resolve()
+                    console.log("Termino la ducha");
+                }, 5000);
+            }
+        );
+    }
+
+    function desayunar() {
+        console.log("Inicio el desayuno");
+        return new Promise(
+            (resolve) => {
+                setTimeout(() => {
+                    resolve()
+                    console.log("Termino el desayuno");
+                }, 5000);
+            }
+        );
+    }
+
+    function vestirse() {
+        console.log("Inicio,  vestirse");
+        return new Promise(
+            (resolve) => {
+                setTimeout(() => {
+                    resolve()
+                    console.log("Termino,  vestirse");
+                }, 5000);
+            }
+        );
+    }
+
+    function arreglarse() {
+        console.log("Inicio, arreglarse");
+        return new Promise(
+            (resolve) => {
+                setTimeout(() => {
+                    resolve()
+                    console.log("Termino, arreglarse");
+                }, 5000);
+            }
+        );
+    }
+
+    function leerNoticias() {
+        console.log("Inicio, leer noticias");
+        return new Promise(
+            (resolve, reject) => {
+                setTimeout(() => {
+                    // resolve significa exitoso
+                    resolve()
+                        // resolve significa error
+                        // reject()
+                    console.log("Termino, leer noticias");
+                }, 10000);
+            }
+        );
+    }
+
+    async function morning() {
+        await tomarDucha();
+        await desayunar();
+        await vestirse();
+        await arreglarse();
+        await leerNoticias();
+    }
+    morning();
+</script>

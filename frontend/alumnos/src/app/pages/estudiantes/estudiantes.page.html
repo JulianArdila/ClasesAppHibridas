@@ -4,6 +4,11 @@
             <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
         <ion-title>Bienvenidos estudiantes </ion-title>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/create-estudiante" shape="round">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -12,7 +17,8 @@
     <ion-button routerLink="/home" expand="block">
         Redirecionar a Home
     </ion-button>
-    <ion-slides pager="true" [options]="slideOpts">
+    <!--
+        <ion-slides pager="true" [options]="slideOpts">
 
         <ion-slide>
             <img src="https://ionicframework.com/docs/demos/api/slides/slide-4.png" />
@@ -30,6 +36,25 @@
             <p><b>Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>
         </ion-slide>
     </ion-slides>
+    -->
+    <div>
+        <ion-list>
+            <ion-list-header>
+                Listado de alumnos
+            </ion-list-header>
+
+            <ion-item *ngFor="let alumno of data">
+                <ion-avatar slot="start">
+                    <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
+                </ion-avatar>
+                <ion-label>
+                    <h2>{{alumno.nombre}}</h2>
+                    <h3>Curso {{alumno.curso}}</h3>
+                    <p>Fecha de nacimeinto: {{alumno.fecha_nacimiento}}</p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
 </ion-content>
 
 <ion-footer>
