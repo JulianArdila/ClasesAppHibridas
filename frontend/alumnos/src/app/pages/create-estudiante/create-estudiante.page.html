@@ -1,6 +1,9 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Crea tu estudiante</ion-title>
+        <ion-title>
+            <div *ngIf="!id">Crea</div>
+            <div *ngIf="id">Edita</div>
+            tu estudiante</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -8,7 +11,7 @@
     <form (ngSubmit)="saveEstudiante(formData)" #formData="ngForm">
         <ion-item>
             <ion-label>Nombre</ion-label>
-            <ion-input required type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
+            <ion-input type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Codigo</ion-label>

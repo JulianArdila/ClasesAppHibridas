@@ -22,7 +22,7 @@ class Alumno(models.Model):
 
     # Campos Numericos
     codigo = models.IntegerField()
-    statura = models.FloatField(blank=True, null=True)
+    estatura = models.FloatField(blank=True, null=True)
     
     # Campos fechas
     fecha_nacimiento = models.DateField()

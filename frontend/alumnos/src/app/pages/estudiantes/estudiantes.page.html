@@ -13,10 +13,12 @@
 </ion-header>
 
 <ion-content>
+    <div>
 
-    <ion-button routerLink="/home" expand="block">
-        Redirecionar a Home
-    </ion-button>
+        <ion-button routerLink="/home" expand="block">
+            Redirecionar a Home
+        </ion-button>
+    </div>
     <!--
         <ion-slides pager="true" [options]="slideOpts">
 
@@ -37,13 +39,17 @@
         </ion-slide>
     </ion-slides>
     -->
-    <div>
+    <div *ngIf="data">
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content refreshingSpinner="lines" closeDuration="500ms"></ion-refresher-content>
+        </ion-refresher>
+
         <ion-list>
             <ion-list-header>
                 Listado de alumnos
             </ion-list-header>
-
-            <ion-item *ngFor="let alumno of data">
+            <app-list></app-list>
+            <ion-item *ngFor="let alumno of data" href="/detail-estudiantes/{{alumno.id}}">
                 <ion-avatar slot="start">
                     <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
                 </ion-avatar>
@@ -54,6 +60,11 @@
                 </ion-label>
             </ion-item>
         </ion-list>
+
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </div>
 </ion-content>
 

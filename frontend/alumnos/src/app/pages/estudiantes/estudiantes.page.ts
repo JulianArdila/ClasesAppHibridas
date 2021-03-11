@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListAlumnos } from 'src/app/interfaces/alumnos';
 import { AlumnosService } from '../../services/alumnos.service';
 
 @Component({
@@ -11,22 +12,15 @@ export class EstudiantesPage implements OnInit {
     initialSlide: 1,
     speed: 400
   };
-  data:any; 
+  next: boolean = true;
+  data = [];
+  pg: number = 1;
   // Entrada
 
   constructor(
     private service: AlumnosService
   ) {
     console.log("Contructor");
-    this.service.getAlumnos().then(
-      (data) => {
-        console.log(data);
-        this.data = data;
-        for(let alumno of this.data) {
-          console.log(alumno)
-        }
-      }
-    );
   }
   /*
   async ngOnInit() {
@@ -39,6 +33,7 @@ export class EstudiantesPage implements OnInit {
 
   ngOnInit() {
     console.log("ngOnInit");
+    this.loadData();
   }
 
   ionViewCanEnter(){
@@ -67,5 +62,31 @@ export class EstudiantesPage implements OnInit {
     console.log("ionViewWillUnload");   
   }
 
+  doRefresh(event) {
+    console.log(event)
+    this.pg = 1;
+    console.log(this.pg)
+    this.next = true;
+    this.loadData();
+    if (event) event.target.complete();
+  }
+
+  loadData(event?) {
+    if (this.next) {
+      if (event) this.pg++;
+      this.service.getAlumnos(this.pg).then(
+        (data: ListAlumnos) => {
+          console.log(data);
+          if (event) this.data = this.data.concat(data.results);
+          else this.data = data.results;
+          if(!data.next) this.next = false;
+          //for(let alumno of this.data) {
+          //  console.log(alumno)
+          //}
+        }
+      );
+    }
+    if (event) event.target.complete();
+  }
 
 }

@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'create-estudiante',
     loadChildren: () => import('./pages/create-estudiante/create-estudiante.module').then( m => m.CreateEstudiantePageModule)
   },
+  {
+    path: 'create-estudiante/:id',
+    loadChildren: () => import('./pages/create-estudiante/create-estudiante.module').then( m => m.CreateEstudiantePageModule)
+  },
+  {
+    path: 'detail-estudiantes/:id',
+    loadChildren: () => import('./pages/detail-estudiantes/detail-estudiantes.module').then( m => m.DetailEstudiantesPageModule)
+  },
 ];
 
 @NgModule({

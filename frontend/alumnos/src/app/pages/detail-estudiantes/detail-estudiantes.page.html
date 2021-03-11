@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>detail-estudiantes</ion-title>
+        <ion-buttons *ngIf="data" slot="end">
+            <ion-button routerLink="/create-estudiante/{{data.id}}" shape="round">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid *ngIf="data" fixed>
+        <ion-row>
+            <ion-col size="6">Nombre</ion-col>
+            <ion-col size="6">{{data.nombre}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="6">Codigo</ion-col>
+            <ion-col size="6">{{data.codigo}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="6">Fecha de nacimeinto</ion-col>
+            <ion-col size="6">{{data.fecha_nacimiento}}</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
