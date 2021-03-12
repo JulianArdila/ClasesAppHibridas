@@ -28,5 +28,6 @@ urlpatterns = [
     path('formulario_sin_ajax/', formulario_sin_ajax),
     path('formulario_con_ajax/', formulario_con_ajax),
     url(r'^api/v1/', include(urlapi)),
-    url(r'^api/v1/auth/', include('rest_auth.urls'))
+    url(r'^api/v1/auth/', include('rest_auth.urls')),
+    url(r'^api/v1/', include(('user.urls','user'))),
 ]

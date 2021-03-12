@@ -3,10 +3,22 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/login"></ion-back-button>
         </ion-buttons>
-        <ion-title>register</ion-title>
+        <ion-title>Registro</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <form (ngSubmit)="saveUser(formData)" #formData="ngForm">
+        <ion-input required type="text" [(ngModel)]="username" name="username" placeholder="Ingrese el Nombre de usuario"></ion-input>
+        <ion-input required type="text" [(ngModel)]="password" name="password" clear-on-edit="true" placeholder="Contraseña"></ion-input>
+        <ion-input type="text" [(ngModel)]="first_name" name="first_name" placeholder="Nombres"></ion-input>
+        <ion-input type="text" [(ngModel)]="last_name" name="last_name" placeholder="Apellidos"></ion-input>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Correo"></ion-input>
+        <ion-input type="number" [(ngModel)]="phone" name="phone" placeholder="Teléfono"></ion-input>
+        <ion-input required type="date" [(ngModel)]="birthday" name="birthday" placeholder="Fecha de cumpleaños"></ion-input>
+        <ion-input type="number" [(ngModel)]="cc" name="cc" placeholder="CC"></ion-input>
+        <ion-button type="submit" expand="block" fill="clear" shape="round">
+            Guardar
+        </ion-button>
+    </form>
 </ion-content>

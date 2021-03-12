@@ -18,6 +18,7 @@
             Redirecionar a Estudiantes
         </ion-button>
         <strong>Ready to create an app?</strong>
+        <app-list *ngFor="let alumno of data" [alumno]="alumno"></app-list>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
     </div>
 </ion-content>

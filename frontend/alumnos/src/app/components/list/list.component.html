@@ -1,3 +1,10 @@
-<p>
-  list works!
-</p>
+<ion-item href="/detail-estudiantes/{{alumno.id}}">
+    <ion-avatar slot="start">
+        <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
+    </ion-avatar>
+    <ion-label>
+        <h2>{{alumno.nombre}}</h2>
+        <h3>Curso {{alumno.curso}}</h3>
+        <p>Fecha de nacimeinto: {{alumno.fecha_nacimiento}}</p>
+    </ion-label>
+</ion-item>

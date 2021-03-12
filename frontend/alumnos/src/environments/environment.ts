@@ -17,7 +17,8 @@ export const environment = {
       link: '/alumnos/',
     },
     user: {
-      login: '/auth/login/'
+      login: '/auth/login/',
+      register: '/user/'
     }
   }
 };
