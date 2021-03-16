@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from alumnos.views import principal, formulario_sin_ajax, formulario_con_ajax
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 
 urlapi = [
     url(r'^', include(('alumnos.urls','alumnos'))),
@@ -31,3 +34,10 @@ urlpatterns = [
     url(r'^api/v1/auth/', include('rest_auth.urls')),
     url(r'^api/v1/', include(('user.urls','user'))),
 ]
+
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
+
+urlpatterns += staticfiles_urlpatterns()

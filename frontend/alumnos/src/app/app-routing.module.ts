@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'detail-estudiantes/:id',
     loadChildren: () => import('./pages/detail-estudiantes/detail-estudiantes.module').then( m => m.DetailEstudiantesPageModule)
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'map-sdk',
+    loadChildren: () => import('./pages/map-sdk/map-sdk.module').then( m => m.MapSdkPageModule)
+  },
 ];
 
 @NgModule({
