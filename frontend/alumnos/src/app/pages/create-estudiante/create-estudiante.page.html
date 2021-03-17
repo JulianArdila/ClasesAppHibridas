@@ -35,5 +35,9 @@
         <ion-button expand="block" fill="clear" shape="round" type="submit">
             Guargar
         </ion-button>
+        <img *ngIf="base64Image" src="{{base64Image}}" alt="Imagen Tomada">
+        <ion-button (click)="tomarFoto()" expand="block">
+            Tomar Foto
+        </ion-button>
     </form>
 </ion-content>

@@ -6,6 +6,7 @@ export interface ListAlumnos {
   }
   
   export interface Result {
+    imagen?: string;
     nombre: string;
     codigo: number;
     fecha_nacimiento: string;

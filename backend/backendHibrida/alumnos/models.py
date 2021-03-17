@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 
+class Materia(models.Model):
+    nombre = models.CharField(max_length=200)
+
 class Alumno(models.Model):
     """
     
@@ -31,7 +34,7 @@ class Alumno(models.Model):
     # campo Forengkey
     curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='img/fotosapp/', blank=True, null=True)
-
+    materias = models.ManyToManyField(Materia)
 
     def __str__(self):
         if self.imagen:
@@ -49,3 +52,5 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.curso + " - " + str(self.codigo)
+
+

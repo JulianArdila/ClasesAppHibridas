@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AlumnosService } from 'src/app/services/alumnos.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
 
 @Component({
   selector: 'app-create-estudiante',
@@ -15,10 +17,21 @@ export class CreateEstudiantePage implements OnInit {
   curso:number;
   estatura:number;
   id: number;
+
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    correctOrientation: true
+  }
+  base64Image: string;
+
   constructor(
     private route: ActivatedRoute,
     private service: AlumnosService,
     private navController: NavController,
+    private camera: Camera
   ) {
     let id = this.route.snapshot.paramMap.get("id");
     if (id) {
@@ -41,6 +54,18 @@ export class CreateEstudiantePage implements OnInit {
   }
 
   ngOnInit() { }
+
+  tomarFoto() {
+    this.camera.getPicture(this.options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      console.log(imageData);
+      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+     }, (err) => {
+      // Handle error
+      console.error(err);
+     });
+  }
 
   saveEstudiante(formData) {
     if (formData.valid) {
@@ -68,6 +93,7 @@ export class CreateEstudiantePage implements OnInit {
           }
         );
       } else {
+        if (this.base64Image) formData.value['imagen'] = this.base64Image;
         this.service.createAlumnos(formData.value).then(
           data => {
             this.navController.navigateBack('/estudiantes');

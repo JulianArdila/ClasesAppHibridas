@@ -23,5 +23,10 @@
             <ion-col size="6">Fecha de nacimeinto</ion-col>
             <ion-col size="6">{{data.fecha_nacimiento}}</ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col size="6">Imagen</ion-col>
+            <ion-col size="6">
+                <img *ngIf="data.imagen" src="{{data.imagen}}" alt="Imagen Tomada"></ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>
