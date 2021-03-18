@@ -1,0 +1,12 @@
+{
+  "name": "alumnosReactNative",
+  "displayName": "alumnosReactNative",
+  "expo": {
+    "name": "alumnosReactNative",
+    "slug": "alumnosReactNative",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
