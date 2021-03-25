@@ -1,8 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default class Register extends Component {
+
+    constructor(props) {
+      super(props);
+    }
+
     componentDidMount() {
       console.log('componentDidMount')
     }
@@ -19,11 +24,17 @@ export default class Register extends Component {
       console.log('shouldComponentUpdate')
     }
   
+    redirectToLogin() {
+      console.log('redirectToLogin')
+      this.props.navigation.navigate('Login')
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>Registro!</Text>
                 <StatusBar style="auto" />
+                <Button title="Login" onPress={() => {this.redirectToLogin()}}/>
             </View>
         );
     }

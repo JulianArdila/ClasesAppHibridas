@@ -106,16 +106,17 @@ fit=no">
         let fecha_nacimiento = $("#fecha_nacimiento").val();
         let curso = $("#curso").val();
         var csrfmiddlewaretoken=$( "input[name='csrfmiddlewaretoken']").val();
-        $.ajax({
-        method: "POST",
-        url: "/alumnos/",
-        data: {
+        var data = {
             nombre:nombre,
             codigo:codigo,
             fecha_nacimiento:fecha_nacimiento,
             curso:curso,
             csrfmiddlewaretoken:csrfmiddlewaretoken,
         }
+        $.ajax({
+        method: "POST",
+        url: "/alumnos/",
+        data: data
         }).done(function( data ) {
             console.log(data);
             listarAlumnos()

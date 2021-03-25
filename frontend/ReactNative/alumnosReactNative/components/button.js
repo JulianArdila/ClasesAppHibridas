@@ -1,12 +1,21 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button, Dimensions, View } from 'react-native';
 
 export default function ButtonCustom(props) {
-    console.log(props)
-    let action = () => {
-        console.log(`Hola ${props.nombre}`)
-    }
+    let action = props.action;
+    let color = props.color;
+    let title = props.title;
     return (
-        <button onClick={action}>Click me</button>
+        <View style={styles.button}>
+            <Button color={color} title={title} onPress={action} />
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    button: {
+      width: Dimensions.get('window').width * 0.85,
+      padding: 8,
+      marginTop: 10,
+    },
+  });
