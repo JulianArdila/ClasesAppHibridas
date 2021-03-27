@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import ServiceStudent from '../../conections/students'
+import ServiceStudent from '../../conections/students';
 import { FlatList, SafeAreaView, StyleSheet, Text, View, Button } from 'react-native';
 import { ItemComponent } from '../../components/list/items';
 
@@ -85,10 +85,10 @@ export default class Estudiantes extends Component {
                     <Button title="Refresh" onPress={() => this.refresh()}></Button>
                     <Button title="Crear Alumno" onPress={() => this.props.navigation.navigate('FormEstudiantes')}></Button>
                     <FlatList 
-                            keyExtractor={(item) => item.id}
+                            keyExtractor={(item) => item.id.toString()}
                             data={this.data}
                             renderItem={({ item }) => (
-                            <ItemComponent key={item.id} title={item.nombre} subtitle={item.id} />
+                                <ItemComponent key={item.id.toString()} title={item.nombre} subtitle={item.id} />
                             )}
                             onEndReachedThreshold={10}
                             onEndReached={

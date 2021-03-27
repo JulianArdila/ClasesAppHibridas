@@ -6,4 +6,8 @@ export default class ServiceUser extends SDKService {
         return await this.post(this.endpoints.user.login, data);
     }
 
+    async register(data) {
+        return await this.post(this.endpoints.user.register, data);
+    }
+
 }

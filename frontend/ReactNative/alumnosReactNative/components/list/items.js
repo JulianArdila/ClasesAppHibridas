@@ -3,7 +3,8 @@ import { StyleSheet, Dimensions, Text, View } from 'react-native';
 
 const style = StyleSheet.create({
     item: {
-        width: '-webkit-fill-available',
+        // Funciona en Expo CLI, pero no en React Native CLI
+        //width: '-webkit-fill-available',
         backgroundColor: 'rgb(213, 213, 213)',
         padding: 9
     },

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import ButtonCustom from '../../components/button'
-import { StyleSheet, Dimensions, View, Button, TextInput, AsyncStorage } from 'react-native';
+import { StyleSheet, Dimensions, View, TextInput, AsyncStorage } from 'react-native';
 
 import ServiceUser from '../../conections/user';
 
@@ -22,11 +22,13 @@ export default class Login extends Component {
     //if (window.localStorage['token']) this.props.navigation.replace('MainWorkFlow');
     this.button_list = [
       {
+        id: 1,
         color: "rgb(16, 0, 255)",
         title: "Log in",
         action: () => this.Login(),
       },
       {
+        id: 2,
         color: "grey",
         title: "Registro",
         action: () => this.redirectToRegister(),
@@ -65,7 +67,7 @@ export default class Login extends Component {
       username: this.username
     }).then(async (data) => {
       if (data['key']) {
-        await AA.setItem(
+        await AsyncStorage.setItem(
           'token',
           data['key']
         );
@@ -97,7 +99,7 @@ export default class Login extends Component {
         
         <ButtonCustom action={() => this.redirectToRegister()} title="Resgitro" color="grey"/>
         */}
-        {this.button_list.map((data) => <ButtonCustom action={data.action} title={data.title} color={data.color} />)}
+        {this.button_list.map((data) => <ButtonCustom key={data.id} action={data.action} title={data.title} color={data.color} />)}
         <StatusBar style="auto" />
       </View>
     );

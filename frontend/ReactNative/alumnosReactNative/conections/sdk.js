@@ -20,14 +20,14 @@ class SDKService {
     async makeEndpointRequest(query, method, data, header) {
         const query_full = this.apiHost + this.apiVersion + query;
 
-        let token = await syncStorage.getItem('token')
+        let token = await AsyncStorage.getItem('token')
 
         let headers = {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             // Funciona en Expo CLI, pero no en React Native CLI
             //'Authorization': `Token ${window.localStorage['token']}`
-            'Authorization': token
+            'Authorization': `Token ${token}`
         };
         var myHeaders = new Headers(headers);
 

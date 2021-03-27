@@ -6,10 +6,8 @@ export const environment = {
   production: false,
   appName: 'Estudiantes',
   apiVersion: 'v1',
-  apiHostFull: 'http://localhost:8000',
-  apiHost: 'http://localhost:8000/api/',
-  //apiHostFull: 'http://192.168.20.21:7000',
-  //apiHost: 'http://192.168.20.21:7000/api/',
+  apiHostFull: 'http://192.168.20.21:8000',
+  apiHost: 'http://192.168.20.21:8000/api/',
   //apiHostFull: 'https://2932ee6ac897.ngrok.io',
   //apiHost: 'https://2932ee6ac897.ngrok.io/api/',
   endpoints: {
