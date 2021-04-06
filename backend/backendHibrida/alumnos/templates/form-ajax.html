@@ -113,10 +113,18 @@ fit=no">
             curso:curso,
             csrfmiddlewaretoken:csrfmiddlewaretoken,
         }
+        let headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            // Funciona en Expo CLI, pero no en React Native CLI
+            //'Authorization': `Token ${window.localStorage['token']}`
+            'Authorization': `Token ${token}`
+        };
         $.ajax({
         method: "POST",
         url: "/alumnos/",
-        data: data
+        data: data,
+        headers: headers,
         }).done(function( data ) {
             console.log(data);
             listarAlumnos()

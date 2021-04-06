@@ -1,22 +1,46 @@
 from django.shortcuts import render
-from .models import Alumno
-from rest_framework import generics
-from alumnos.serializers import AlumnoSerializer
+from .models import Alumno, Curso
+from rest_framework import generics, filters
+from alumnos.serializers import AlumnoSerializer, CursoSerializer
 
 class AlumnoList(generics.ListCreateAPIView):
     serializer_class = AlumnoSerializer
     queryset = Alumno.objects.all()
+    filterset_fields = [
+        'nombre',
+        'codigo',
+        'fecha_nacimiento',
+        'curso',
+        'curso__id',
+        'curso__curso'
+    ]
 
 class AlumnoDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AlumnoSerializer
     queryset = Alumno.objects.all()
+
+
+class CursoList(generics.ListCreateAPIView):
+
+    serializer_class = CursoSerializer
+    queryset = Curso.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = ['id', 'curso']
+
+class CursoDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CursoSerializer
+    queryset = Curso.objects.all()
+    
     
 # Create your views here.
 def principal(request):
     alumnos = Alumno.objects.filter(curso__curso="6D")
-    
+    cursos = Curso.objects.all()
     return render(request, "principal.html", {
         'alumnos':alumnos,
+        'cursos':cursos,
         'titulo': "Titulo desde el Render"
     })
 

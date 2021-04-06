@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from alumnos.models import Alumno
+from alumnos.models import Alumno, Curso
 from drf_extra_fields.fields import Base64ImageField
 
 
@@ -14,3 +14,9 @@ class AlumnoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alumno
         fields = ('nombre','codigo', 'fecha_nacimiento','curso','id', 'estatura', 'imagen')
+
+
+class CursoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Curso
+        fields = '__all__'

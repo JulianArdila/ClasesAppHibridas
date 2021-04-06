@@ -31,11 +31,12 @@ class Alumno(models.Model):
     fecha_nacimiento = models.DateField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
-    # campo Forengkey
+    # campo Relacionales de modelos
     curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='img/fotosapp/', blank=True, null=True)
     materias = models.ManyToManyField(Materia)
 
+    # Campo Media
+    imagen = models.ImageField(upload_to='img/fotosapp/', blank=True, null=True)
     def __str__(self):
         if self.imagen:
             return self.imagen.url
