@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CursosService } from 'src/app/services/cursos.service';
 
 
 @Component({
@@ -11,11 +12,11 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   styleUrls: ['./create-estudiante.page.scss'],
 })
 export class CreateEstudiantePage implements OnInit {
-  nombre:string;
-  codigo:number;
+  nombre:string = "nombre";
+  codigo:number = 1011;
   fecha_nacimiento:string;
-  curso:number;
-  estatura:number;
+  curso:number = 2;
+  estatura:number = 1.68;
   id: number;
 
   options: CameraOptions = {
@@ -26,14 +27,17 @@ export class CreateEstudiantePage implements OnInit {
     correctOrientation: true
   }
   base64Image: string;
+  cursos: any;
 
   constructor(
     private route: ActivatedRoute,
     private service: AlumnosService,
     private navController: NavController,
-    private camera: Camera
+    private camera: Camera,
+    private cursosService: CursosService,
   ) {
     let id = this.route.snapshot.paramMap.get("id");
+    console.log(id);
     if (id) {
       this.id = parseInt(id);
       this.service.getAlumnosId(this.id).then(
@@ -53,7 +57,13 @@ export class CreateEstudiantePage implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  async ngOnInit() {
+    var cursos = await this.cursosService.getCursos({
+      //ordering: 'username'
+    });
+    if (cursos['results']) this.cursos = cursos['results']
+    console.log(this.cursos);
+  }
 
   tomarFoto() {
     this.camera.getPicture(this.options).then((imageData) => {
@@ -94,6 +104,7 @@ export class CreateEstudiantePage implements OnInit {
         );
       } else {
         if (this.base64Image) formData.value['imagen'] = this.base64Image;
+        console.log(formData.value);
         this.service.createAlumnos(formData.value).then(
           data => {
             this.navController.navigateBack('/estudiantes');

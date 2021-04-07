@@ -63,6 +63,7 @@ export class SdkService {
     if (TOKEN) {
       let headers = new HttpHeaders().set('Authorization', `Token ${TOKEN}`)//.set("accept", "text/plain");
       console.log(headers.get("Authorization"));
+      console.log(headers);
       return { headers: headers }
     }
     return {}
@@ -83,7 +84,8 @@ export class SdkService {
   
   // query -> Es una url de nuestros
   async post<T>(query, data) {
-    let headers = this.getHeaders();
+    let headers = await this.getHeaders();
+    console.log('headers', headers);
     return await this.makeEndpointRequest(query, 'post', data, headers);
   }
 }

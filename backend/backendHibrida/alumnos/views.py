@@ -5,7 +5,9 @@ from alumnos.serializers import AlumnoSerializer, CursoSerializer
 
 class AlumnoList(generics.ListCreateAPIView):
     serializer_class = AlumnoSerializer
-    queryset = Alumno.objects.all()
+    queryset = Alumno.objects.all().order_by('nombre')
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['nombre', 'id']
     filterset_fields = [
         'nombre',
         'codigo',

@@ -16,6 +16,9 @@ export const environment = {
     estudiantes: {
       link: '/alumnos/',
     },
+    cursos: {
+      link: '/cursos/',
+    },
     user: {
       login: '/auth/login/',
       register: '/user/'

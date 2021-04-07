@@ -62,23 +62,23 @@ export class AlumnosService extends SdkService {
 
   async createAlumnos(body) {
     return await this.post(this.endpoints.estudiantes.link, body);
-    //let headers = await this.getHeaders();
-    //console.log(headers);
-    //console.log(this.apiHost + this.apiVersion + this.endpoints.estudiantes.link);
-    //return new Promise(
-    //  (resolve, reject) => {
-    //    this.http.post(this.apiHost + this.apiVersion + this.endpoints.estudiantes.link, body, headers).subscribe(
-    //      res => {
-    //        console.log(resolve);
-    //        resolve(res);
-    //      }, err => {
-    //        console.log(err);
-    //        console.log(reject);
-    //        reject(err);
-    //      }
-    //    )
-    //  }
-    //)
   }
+  //let headers = await this.getHeaders();
+  //console.log(headers);
+  //console.log(this.apiHost + this.apiVersion + this.endpoints.estudiantes.link);
+  //return new Promise(
+  //  (resolve, reject) => {
+  //    this.http.post(this.apiHost + this.apiVersion + this.endpoints.estudiantes.link, body, headers).subscribe(
+  //      res => {
+  //        console.log(resolve);
+  //        resolve(res);
+  //      }, err => {
+  //        console.log(err);
+  //        console.log(reject);
+  //        reject(err);
+  //      }
+  //    )
+  //  }
+  //)
 
 }

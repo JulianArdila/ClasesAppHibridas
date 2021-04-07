@@ -25,7 +25,7 @@
             <ion-label>Curso</ion-label>
             <ion-select required placeholder="Selecione un curso" [(ngModel)]="curso" name="curso">
                 <ion-select-option value="">-----</ion-select-option>
-                <ion-select-option value="1">Curso 1</ion-select-option>
+                <ion-select-option *ngFor="let curso_aux of cursos" [value]="curso_aux.id">{{curso_aux.curso}}</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>
