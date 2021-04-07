@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
             'username': {'write_only': True},
             'birthday': {'required': True},
         }
+    
 
     def create(self, validated_data, instance=None):
         print(validated_data)

@@ -48,6 +48,7 @@ class Curso(models.Model):
     curso = models.CharField(max_length=200)
     codigo = models.IntegerField()
     estado = models.BooleanField()
+    ## seccion = --- 
     promedio = models.FloatField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
@@ -55,3 +56,7 @@ class Curso(models.Model):
         return self.curso + " - " + str(self.codigo)
 
 
+"""
+class Seccion(X):
+    name = -----
+"""
