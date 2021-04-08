@@ -1,0 +1,10 @@
+<div *ngFor="let position of list">
+    <app-custom-component [entrada]="listado[position]"></app-custom-component>
+    <ion-item>
+        <ion-label>Pizza</ion-label>
+        <ion-select value="peperoni" [(ngModule)]="resultado[position].asistencia" multiple="true" placeholder="Select Pizza">
+            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+            <ion-select-option value="hawaii">Hawaii</ion-select-option>
+        </ion-select>
+    </ion-item>
+</div>
